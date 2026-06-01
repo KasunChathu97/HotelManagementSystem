@@ -1,0 +1,312 @@
+/* Typography & Focus Styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Light mode overrides for dark text utilities to ensure readability */
+html:not(.dark) .text-slate-100,
+html:not(.dark) .text-slate-200,
+html:not(.dark) .text-slate-300 {
+    color: #1e293b !important; /* dark.800 */
+}
+html:not(.dark) .text-slate-400 {
+    color: #475569 !important; /* dark.600 */
+}
+html:not(.dark) .text-slate-500 {
+    color: #64748b !important; /* dark.500 */
+}
+html:not(.dark) input, 
+html:not(.dark) select, 
+html:not(.dark) textarea {
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #020617; /* dark.950 */
+}
+::-webkit-scrollbar-thumb {
+    background: #1e293b; /* dark.800 */
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #334155; /* dark.700 */
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+}
+.dark .glass-panel {
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: none;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dark .glass-card {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(139, 92, 246, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px -10px rgba(139, 92, 246, 0.1);
+}
+.dark .glass-card:hover {
+    background: rgba(30, 41, 59, 0.55);
+    border-color: rgba(139, 92, 246, 0.2);
+    box-shadow: 0 12px 20px -10px rgba(139, 92, 246, 0.15);
+}
+
+/* Custom Gradients */
+.gradient-text {
+    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #6d28d9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(109, 40, 217, 0.03) 100%);
+}
+
+.gradient-border-active {
+    position: relative;
+}
+.gradient-border-active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+}
+
+/* Micro-animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Toasts Container */
+#toast-container {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    pointer-events: none;
+}
+
+.toast {
+    pointer-events: auto;
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
+    transform: translateX(100%);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom inputs styling */
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+}
+
+/* Tabs line indicator animation */
+.tab-active {
+    color: #a78bfa;
+    border-bottom: 2px solid #8b5cf6;
+}
+
+/* Stepper indicators */
+.step-dot.active {
+    background-color: #8b5cf6;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+}
+.step-dot.completed {
+    background-color: #10b981;
+}
+
+/* Custom active sidebar styling */
+.nav-link-active {
+    background: linear-gradient(90deg, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0.02) 100%);
+    border-left: 3px solid #8b5cf6;
+    color: #f8fafc;
+}
+
+/* Print Layout Optimization Styles */
+@media print {
+    /* Hide layout components not relevant for report papers */
+    aside#sidebar-nav, 
+    header, 
+    #export-excel-btn, 
+    #export-pdf-btn,
+    .report-tab-btn,
+    #toast-container {
+        display: none !important;
+    }
+    
+    /* Ensure main area fits whole page width */
+    #dashboard-layout {
+        display: block !important;
+        height: auto !important;
+        background: white !important;
+        color: black !important;
+    }
+    
+    main#view-content {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .glass-panel {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        color: #000000 !important;
+    }
+    
+    h1, h2, h3, h4, h5, h6, span, td, th {
+        color: #000000 !important;
+    }
+
+    tr {
+        border-bottom: 1px solid #ddd !important;
+    }
+}
+
+/* Global Light Mode overrides for hardcoded dark classes to ensure visual consistency */
+html:not(.dark) .border-slate-800,
+html:not(.dark) .border-slate-800\/80,
+html:not(.dark) .border-slate-800\/85,
+html:not(.dark) .border-slate-800\/60,
+html:not(.dark) .border-slate-800\/50,
+html:not(.dark) .border-slate-800\/40,
+html:not(.dark) .border-slate-850,
+html:not(.dark) .border-slate-700\/50,
+html:not(.dark) .border-slate-700 {
+    border-color: rgba(226, 232, 240, 0.8) !important;
+}
+
+html:not(.dark) .divide-slate-800\/30 > :not([hidden]) ~ :not([hidden]),
+html:not(.dark) .divide-slate-800\/40 > :not([hidden]) ~ :not([hidden]) {
+    border-color: rgba(226, 232, 240, 0.6) !important;
+}
+
+html:not(.dark) .bg-slate-900\/60,
+html:not(.dark) .bg-slate-900\/50,
+html:not(.dark) .bg-slate-900\/40 {
+    background-color: rgba(241, 245, 249, 0.6) !important;
+}
+
+html:not(.dark) .bg-slate-900 {
+    background-color: #ffffff !important;
+}
+
+html:not(.dark) .bg-slate-950,
+html:not(.dark) .bg-slate-950\/40,
+html:not(.dark) .bg-slate-950\/60 {
+    background-color: #f8fafc !important;
+}
+
+html:not(.dark) .hover\:bg-slate-900\/30:hover {
+    background-color: rgba(241, 245, 249, 0.6) !important;
+}
+
+/* Light mode overrides for badge text/bg contrast issues */
+html:not(.dark) .text-emerald-400 {
+    color: #047857 !important;
+}
+html:not(.dark) .bg-emerald-500\/10 {
+    background-color: #ecfdf5 !important;
+    border-color: #a7f3d0 !important;
+}
+
+html:not(.dark) .text-rose-400 {
+    color: #b91c1c !important;
+}
+html:not(.dark) .bg-rose-500\/10 {
+    background-color: #fff1f2 !important;
+    border-color: #fecdd3 !important;
+}
+
+html:not(.dark) .text-amber-400 {
+    color: #b45309 !important;
+}
+html:not(.dark) .bg-amber-500\/10 {
+    background-color: #fef3c7 !important;
+    border-color: #fde68a !important;
+}
+
+html:not(.dark) .text-indigo-400 {
+    color: #4f46e5 !important;
+}
+html:not(.dark) .bg-indigo-500\/10 {
+    background-color: #e0e7ff !important;
+    border-color: #c7d2fe !important;
+}
+
+html:not(.dark) .text-orange-400 {
+    color: #c2410c !important;
+}
+html:not(.dark) .bg-orange-500\/10 {
+    background-color: #fff7ed !important;
+    border-color: #ffedd5 !important;
+}
+
+html:not(.dark) .bg-brand-950\/20 {
+    background-color: rgba(139, 92, 246, 0.05) !important;
+    border-color: rgba(139, 92, 246, 0.15) !important;
+}
+
+/* Ensure active state text elements look bright and legible */
+html:not(.dark) .text-slate-100,
+html:not(.dark) .text-slate-200,
+html:not(.dark) .text-slate-300 {
+    color: #1e293b !important;
+}
