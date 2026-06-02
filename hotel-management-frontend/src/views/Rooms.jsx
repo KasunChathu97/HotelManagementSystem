@@ -169,8 +169,8 @@ export default function Rooms() {
                                             <td className="py-4 px-6 font-bold text-slate-200">Room {room.roomNumber || room.room_number}</td>
                                             <td className="py-4 px-6 font-medium">{room.roomType || room.room_type}</td>
                                             <td className="py-4 px-6">{room.capacity} {room.capacity === 1 ? 'Guest' : 'Guests'}</td>
-                                            <td className="py-4 px-6 font-semibold">${(room.priceDay || room.price_day || room.price || 0).toFixed(2)}</td>
-                                            <td className="py-4 px-6 font-semibold">${(room.priceNight || room.price_night || room.price || 0).toFixed(2)}</td>
+                                            <td className="py-4 px-6 font-semibold">Rs {(room.priceDay || room.price_day || room.price || 0).toFixed(2)}</td>
+                                            <td className="py-4 px-6 font-semibold">Rs {(room.priceNight || room.price_night || room.price || 0).toFixed(2)}</td>
                                             <td className="py-4 px-6">
                                                 <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-bold border capitalize ${colorClass}`}>
                                                     {currentStatus}
@@ -281,7 +281,7 @@ export default function Rooms() {
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label htmlFor="room-price-day" className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Day Price ($)</label>
+                                    <label htmlFor="room-price-day" className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Day Price (Rs)</label>
                                     <input 
                                         type="number" 
                                         id="room-price-day" 
@@ -295,7 +295,7 @@ export default function Rooms() {
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="room-price-night" className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Night Price ($)</label>
+                                    <label htmlFor="room-price-night" className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Night Price (Rs)</label>
                                     <input 
                                         type="number" 
                                         id="room-price-night" 

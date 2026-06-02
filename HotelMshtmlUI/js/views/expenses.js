@@ -90,7 +90,7 @@ export async function render(container) {
                             </select>
                         </div>
                         <div>
-                            <label for="expense-amount" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Amount ($)</label>
+                            <label for="expense-amount" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Amount (Rs)</label>
                             <input type="number" id="expense-amount" required min="0.01" step="0.01" placeholder="0.00"
                                 class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-200 focus:border-brand-500 transition-all text-sm">
                         </div>
@@ -161,7 +161,7 @@ function renderExpensesList(expenses) {
                         ${e.category}
                     </span>
                 </td>
-                <td class="py-3.5 px-6 font-bold text-rose-400">-$${(e.amount || 0).toFixed(2)}</td>
+                <td class="py-3.5 px-6 font-bold text-rose-400">-Rs ${(e.amount || 0).toFixed(2)}</td>
                 <td class="py-3.5 px-6 text-slate-400 text-xs">${dateFmt}</td>
             </tr>
         `;

@@ -313,7 +313,7 @@ export default function Bookings() {
                                                 <div className="text-xs text-slate-300 font-semibold">{checkInFmt} &mdash; {checkOutFmt}</div>
                                                 <div className="text-[10px] text-slate-450 mt-0.5"><i className="fa-solid fa-clock mr-1 text-slate-500"></i> Arrival: {b.checkInTime || b.check_in_time || '12:00'}</div>
                                             </td>
-                                            <td className="py-4 px-6 font-bold text-slate-200">${(b.totalAmount || b.total_amount || 0).toFixed(2)}</td>
+                                            <td className="py-4 px-6 font-bold text-slate-200">Rs {(b.totalAmount || b.total_amount || 0).toFixed(2)}</td>
                                             <td className="py-4 px-6">
                                                 <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-bold border capitalize ${colorClass}`}>
                                                     {status}
@@ -472,7 +472,7 @@ export default function Bookings() {
                                                 <option value="">-- Select an available room --</option>
                                                 {availableRooms.map(r => (
                                                     <option key={r.id || r._id} value={r.id || r._id}>
-                                                        Room {r.roomNumber || r.room_number} - {r.roomType || r.room_type} (Day: ${r.priceDay || r.price}, Night: ${r.priceNight || r.price})
+                                                        Room {r.roomNumber || r.room_number} - {r.roomType || r.room_type} (Day: Rs {r.priceDay || r.price}, Night: Rs {r.priceNight || r.price})
                                                     </option>
                                                 ))}
                                             </select>
@@ -507,7 +507,7 @@ export default function Bookings() {
                                         </div>
                                         <div className="flex justify-between text-sm font-bold border-t border-slate-800 pt-2 text-base text-slate-100">
                                             <span>Total Amount:</span>
-                                            <span className="text-brand-400">${pricing.total.toFixed(2)}</span>
+                                            <span className="text-brand-400">Rs {pricing.total.toFixed(2)}</span>
                                         </div>
                                     </div>
                                 </div>

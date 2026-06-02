@@ -211,9 +211,9 @@ async function loadDashboardData(container) {
         document.getElementById('metric-checkins').innerText = todayCheckIns;
         document.getElementById('metric-checkouts').innerText = todayCheckOuts;
         
-        document.getElementById('metric-monthly-profit').innerText = `$${monthlyProfit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-        document.getElementById('metric-monthly-rev').innerText = `$${monthlyIncome.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
-        document.getElementById('metric-monthly-exp').innerText = `$${monthlyExpenses.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
+        document.getElementById('metric-monthly-profit').innerText = `Rs ${monthlyProfit.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        document.getElementById('metric-monthly-rev').innerText = `Rs ${monthlyIncome.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
+        document.getElementById('metric-monthly-exp').innerText = `Rs ${monthlyExpenses.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
         
         // Color profit value based on profit status (negative/positive)
         const profitCard = document.getElementById('metric-monthly-profit');
@@ -392,7 +392,7 @@ function renderRecentBookings(bookings) {
                 <td class="py-4 px-6 font-medium">${b.customer?.name || 'Walk-in Guest'}</td>
                 <td class="py-4 px-6 text-indigo-400 font-bold">Room ${b.room?.roomNumber || 'N/A'}</td>
                 <td class="py-4 px-6 text-xs text-slate-400">${checkInFormatted} &mdash; ${checkOutFormatted}</td>
-                <td class="py-4 px-6 font-bold text-slate-200">$${(b.totalAmount || 0).toFixed(2)}</td>
+                <td class="py-4 px-6 font-bold text-slate-200">Rs ${(b.totalAmount || 0).toFixed(2)}</td>
                 <td class="py-4 px-6">
                     <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold capitalize border ${colorClass}">
                         ${statusLabel}

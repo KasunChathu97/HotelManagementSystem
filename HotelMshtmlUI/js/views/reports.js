@@ -114,7 +114,7 @@ function renderIncomeReport(data, container) {
         <div class="space-y-6">
             <div class="flex justify-between items-center border-b border-slate-800 pb-4">
                 <h3 class="text-base font-bold text-slate-200 font-heading">Total Income Ledger</h3>
-                <span class="text-xs font-semibold text-slate-400">Total Revenue: <span class="text-emerald-400 text-sm font-bold">$${(data.totalRevenue || 0).toFixed(2)}</span></span>
+                <span class="text-xs font-semibold text-slate-400">Total Revenue: <span class="text-emerald-400 text-sm font-bold">Rs ${(data.totalRevenue || 0).toFixed(2)}</span></span>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
@@ -132,7 +132,7 @@ function renderIncomeReport(data, container) {
                                 <td class="py-3 font-medium">${r.guestName || r.customerName || 'Walk-in'}</td>
                                 <td class="py-3 font-semibold text-indigo-400">Room ${r.roomNumber || 'N/A'}</td>
                                 <td class="py-3 text-xs text-slate-400">${r.method || 'Card'}</td>
-                                <td class="py-3 font-bold text-slate-200">$${(r.amount || 0).toFixed(2)}</td>
+                                <td class="py-3 font-bold text-slate-200">Rs ${(r.amount || 0).toFixed(2)}</td>
                             </tr>
                         `).join('')}
                     </tbody>
@@ -148,7 +148,7 @@ function renderExpenseReport(data, container) {
         <div class="space-y-6">
             <div class="flex justify-between items-center border-b border-slate-800 pb-4">
                 <h3 class="text-base font-bold text-slate-200 font-heading">Categorized Overhead Costs</h3>
-                <span class="text-xs font-semibold text-slate-400">Total Expenses: <span class="text-rose-400 text-sm font-bold">-$${(data.totalExpenses || 0).toFixed(2)}</span></span>
+                <span class="text-xs font-semibold text-slate-400">Total Expenses: <span class="text-rose-400 text-sm font-bold">-Rs ${(data.totalExpenses || 0).toFixed(2)}</span></span>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
@@ -164,7 +164,7 @@ function renderExpenseReport(data, container) {
                             <tr>
                                 <td class="py-3 font-medium">${r.title}</td>
                                 <td class="py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-900 border border-slate-800">${r.category}</span></td>
-                                <td class="py-3 font-bold text-rose-400">-$${(r.amount || 0).toFixed(2)}</td>
+                                <td class="py-3 font-bold text-rose-400">-Rs ${(r.amount || 0).toFixed(2)}</td>
                             </tr>
                         `).join('')}
                     </tbody>
@@ -188,15 +188,15 @@ function renderProfitLossReport(data, container) {
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
                     <span class="text-xs text-slate-400 font-medium">Total Operational Revenue</span>
-                    <h4 class="text-2xl font-bold text-emerald-400 mt-1 font-heading">$${income.toFixed(2)}</h4>
+                    <h4 class="text-2xl font-bold text-emerald-400 mt-1 font-heading">Rs ${income.toFixed(2)}</h4>
                 </div>
                 <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
                     <span class="text-xs text-slate-400 font-medium">Total Operating Costs</span>
-                    <h4 class="text-2xl font-bold text-rose-400 mt-1 font-heading">-$${expenses.toFixed(2)}</h4>
+                    <h4 class="text-2xl font-bold text-rose-400 mt-1 font-heading">-Rs ${expenses.toFixed(2)}</h4>
                 </div>
                 <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
                     <span class="text-xs text-slate-400 font-medium">Net Profit / Surplus</span>
-                    <h4 class="text-2xl font-bold ${profit >= 0 ? 'text-slate-100' : 'text-rose-400'} mt-1 font-heading">$${profit.toFixed(2)}</h4>
+                    <h4 class="text-2xl font-bold ${profit >= 0 ? 'text-slate-100' : 'text-rose-400'} mt-1 font-heading">Rs ${profit.toFixed(2)}</h4>
                 </div>
             </div>
             <div class="p-4 bg-brand-950/20 border border-brand-850/40 rounded-xl flex items-center justify-between">

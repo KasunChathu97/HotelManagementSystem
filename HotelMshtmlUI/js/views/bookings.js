@@ -160,7 +160,7 @@ export async function render(container) {
                             </div>
                             <div class="flex justify-between text-sm font-bold border-t border-slate-800 pt-2 text-base text-slate-100">
                                 <span>Total Amount:</span>
-                                <span class="text-brand-400" id="summary-total-price">$0.00</span>
+                                <span class="text-brand-400" id="summary-total-price">Rs 0.00</span>
                             </div>
                         </div>
                     </div>
@@ -282,7 +282,7 @@ function renderBookingsTable(bookings) {
                     <div class="text-xs text-slate-300 font-semibold">${checkInFmt} &mdash; ${checkOutFmt}</div>
                     <div class="text-[10px] text-slate-400 mt-0.5"><i class="fa-solid fa-clock mr-1 text-slate-500"></i> Arrival: ${b.checkInTime || '12:00'}</div>
                 </td>
-                <td class="py-4 px-6 font-bold text-slate-200">$${(b.totalAmount || 0).toFixed(2)}</td>
+                <td class="py-4 px-6 font-bold text-slate-200">Rs ${(b.totalAmount || 0).toFixed(2)}</td>
                 <td class="py-4 px-6">
                     <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold border capitalize ${colorClass}">
                         ${status}
@@ -458,7 +458,7 @@ async function checkRoomAvailability() {
         
         const dropdown = document.getElementById('booking-room-id');
         dropdown.innerHTML = '<option value="">-- Select an available room --</option>' + 
-            availableRooms.map(r => `<option value="${r.id || r._id}">Room ${r.roomNumber} - ${r.roomType} (Day: $${r.priceDay}, Night: $${r.priceNight})</option>`).join('');
+            availableRooms.map(r => `<option value="${r.id || r._id}">Room ${r.roomNumber} - ${r.roomType} (Day: Rs ${r.priceDay}, Night: Rs ${r.priceNight})</option>`).join('');
 
         document.getElementById('room-selection-container').classList.remove('hidden');
         showToast(`Found ${availableRooms.length} available rooms.`, 'success');
@@ -520,7 +520,7 @@ function calculateSummaryPrices() {
     const rateEl = document.getElementById('summary-pricing-type');
     rateEl.className = pricing.isNightStay ? 'font-medium text-indigo-400' : 'font-medium text-amber-400';
 
-    document.getElementById('summary-total-price').innerText = `$${pricing.total.toFixed(2)}`;
+    document.getElementById('summary-total-price').innerText = `Rs ${pricing.total.toFixed(2)}`;
 }
 
 async function submitBookingForm() {

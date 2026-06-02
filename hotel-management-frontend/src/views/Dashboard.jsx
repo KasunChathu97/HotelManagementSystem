@@ -300,11 +300,11 @@ export default function Dashboard() {
                     </div>
                     <div className="mt-3">
                         <h3 className={`text-2xl font-extrabold font-heading ${monthlyProfit < 0 ? 'text-rose-400' : 'text-slate-100'}`}>
-                            ${monthlyProfit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                            Rs {monthlyProfit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                         </h3>
                         <p className="text-[10px] text-slate-400 mt-1 flex justify-between font-sans">
-                            <span>Rev: <span>${monthlyIncome.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span></span>
-                            <span>Exp: <span>${monthlyExpenses.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span></span>
+                            <span>Rev: <span>Rs {monthlyIncome.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span></span>
+                            <span>Exp: <span>Rs {monthlyExpenses.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span></span>
                         </p>
                     </div>
                 </div>
@@ -383,7 +383,7 @@ export default function Dashboard() {
                                             <td className="py-4 px-6 font-medium">{b.customer?.name || b.customer?.full_name || 'Walk-in Guest'}</td>
                                             <td className="py-4 px-6 text-indigo-400 font-bold">Room {b.room?.roomNumber || b.room?.room_number || 'N/A'}</td>
                                             <td className="py-4 px-6 text-xs text-slate-400">{checkInFormatted} &mdash; {checkOutFormatted}</td>
-                                            <td className="py-4 px-6 font-bold text-slate-200">${(b.totalAmount || b.total_amount || 0).toFixed(2)}</td>
+                                            <td className="py-4 px-6 font-bold text-slate-200">Rs {(b.totalAmount || b.total_amount || 0).toFixed(2)}</td>
                                             <td className="py-4 px-6">
                                                 <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-bold capitalize border ${colorClass}`}>
                                                     {statusLabel}

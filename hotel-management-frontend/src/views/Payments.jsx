@@ -127,7 +127,7 @@ export default function Payments() {
                                             <td className="py-4 px-6 font-bold text-slate-400">#PAY{id.toString().substring(0, 6)}</td>
                                             <td className="py-4 px-6 font-semibold text-slate-200">#{pay.booking?.id || pay.booking_id || 'N/A'}</td>
                                             <td className="py-4 px-6 font-medium">{pay.customer?.name || pay.customer?.full_name || 'Walk-in Guest'}</td>
-                                            <td className="py-4 px-6 font-extrabold text-emerald-400">${(pay.amount || 0).toFixed(2)}</td>
+                                            <td className="py-4 px-6 font-extrabold text-emerald-400">Rs {(pay.amount || 0).toFixed(2)}</td>
                                             <td className="py-4 px-6">
                                                 <span className="inline-block px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-xs font-bold uppercase text-indigo-400">
                                                     {pay.paymentMethod || pay.payment_method}
@@ -169,8 +169,8 @@ export default function Payments() {
                                 >
                                     <option value="">-- Choose active booking ID --</option>
                                     {bookings.map(b => (
-                                        <option key={b.id || b._id} value={b.id || b._id}>
-                                            Ref: #{b.id?.toString().substring(0, 8)} - {b.customer?.name || b.customer?.full_name} (${(b.totalAmount || b.total_amount || 0).toFixed(2)})
+                                            <option key={b.id || b._id} value={b.id || b._id}>
+                                            Ref: #{b.id?.toString().substring(0, 8)} - {b.customer?.name || b.customer?.full_name} (Rs {(b.totalAmount || b.total_amount || 0).toFixed(2)})
                                         </option>
                                     ))}
                                 </select>
@@ -178,7 +178,7 @@ export default function Payments() {
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label htmlFor="pay-amount" className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Amount ($)</label>
+                                    <label htmlFor="pay-amount" className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Amount (Rs)</label>
                                     <input 
                                         type="number" 
                                         id="pay-amount" 

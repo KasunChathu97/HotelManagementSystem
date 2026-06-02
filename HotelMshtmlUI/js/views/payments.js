@@ -78,7 +78,7 @@ export async function render(container) {
                     </div>
 
                     <div>
-                        <label for="payment-amount" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Payment Amount ($)</label>
+                        <label for="payment-amount" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Payment Amount (Rs)</label>
                         <input type="number" id="payment-amount" required min="0.01" step="0.01" placeholder="0.00"
                             class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-200 focus:border-brand-500 transition-all text-sm">
                     </div>
@@ -161,7 +161,7 @@ async function fetchPaymentsData() {
 function populateBookingsDropdown() {
     const dropdown = document.getElementById('payment-booking-id');
     dropdown.innerHTML = '<option value="">-- Choose active stay booking --</option>' + 
-        bookingsList.map(b => `<option value="${b.id || b._id}">Booking #${(b.id || b._id).toString().substring(0, 8)} - Guest: ${b.customer?.name || 'Walk-in'} (Owed: $${(b.totalAmount || 0).toFixed(2)})</option>`).join('');
+        bookingsList.map(b => `<option value="${b.id || b._id}">Booking #${(b.id || b._id).toString().substring(0, 8)} - Guest: ${b.customer?.name || 'Walk-in'} (Owed: Rs ${(b.totalAmount || 0).toFixed(2)})</option>`).join('');
 }
 
 function renderPaymentsTable(payments) {
@@ -191,7 +191,7 @@ function renderPaymentsTable(payments) {
                 <td class="py-4 px-6 font-mono text-slate-400">TXN-${(p.id || p._id || '').toString().substring(0, 8).toUpperCase()}</td>
                 <td class="py-4 px-6 font-semibold">#${(p.bookingId || p.booking?.id || p.booking?._id || '').toString().substring(0, 8)}</td>
                 <td class="py-4 px-6 font-medium">${p.booking?.customer?.name || 'Guest'}</td>
-                <td class="py-4 px-6 font-bold text-slate-100">$${(p.amount || 0).toFixed(2)}</td>
+                <td class="py-4 px-6 font-bold text-slate-100">Rs ${(p.amount || 0).toFixed(2)}</td>
                 <td class="py-4 px-6">
                     <span class="inline-flex items-center gap-1.5 text-xs text-slate-300">
                         <i class="fa-solid ${p.method === 'Cash' ? 'fa-wallet text-amber-500' : p.method === 'Card' ? 'fa-credit-card text-brand-400' : 'fa-building-columns text-sky-400'}"></i>

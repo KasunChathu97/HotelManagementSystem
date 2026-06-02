@@ -97,12 +97,12 @@ export async function render(container) {
 
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label for="room-price-day" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Day Price ($)</label>
+                            <label for="room-price-day" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Day Price (Rs)</label>
                             <input type="number" id="room-price-day" required min="0" step="0.01" placeholder="0.00"
                                 class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-200 focus:border-brand-500 transition-all text-sm">
                         </div>
                         <div>
-                            <label for="room-price-night" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Night Price ($)</label>
+                            <label for="room-price-night" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Night Price (Rs)</label>
                             <input type="number" id="room-price-night" required min="0" step="0.01" placeholder="0.00"
                                 class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-200 focus:border-brand-500 transition-all text-sm">
                         </div>
@@ -170,8 +170,8 @@ function renderRoomsTable(rooms) {
                 <td class="py-4 px-6 font-bold text-slate-200">Room ${room.roomNumber}</td>
                 <td class="py-4 px-6 font-medium">${room.roomType}</td>
                 <td class="py-4 px-6">${room.capacity} ${room.capacity === 1 ? 'Guest' : 'Guests'}</td>
-                <td class="py-4 px-6 font-semibold">$${(room.priceDay || room.price || 0).toFixed(2)}</td>
-                <td class="py-4 px-6 font-semibold">$${(room.priceNight || room.price || 0).toFixed(2)}</td>
+                <td class="py-4 px-6 font-semibold">Rs ${(room.priceDay || room.price || 0).toFixed(2)}</td>
+                <td class="py-4 px-6 font-semibold">Rs ${(room.priceNight || room.price || 0).toFixed(2)}</td>
                 <td class="py-4 px-6">
                     <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold border capitalize ${colorClass}">
                         ${status}

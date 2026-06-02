@@ -131,7 +131,7 @@ export default function Expenses() {
                                                     <span className="font-semibold text-slate-200">{exp.category}</span>
                                                 </div>
                                             </td>
-                                            <td className="py-4 px-6 font-extrabold text-rose-400">${(exp.amount || 0).toFixed(2)}</td>
+                                            <td className="py-4 px-6 font-extrabold text-rose-400">Rs {(exp.amount || 0).toFixed(2)}</td>
                                             <td className="py-4 px-6 text-xs text-slate-450">{formattedDate}</td>
                                             <td className="py-4 px-6 text-slate-400 italic text-xs truncate max-w-xs">{exp.remarks || 'No notes added'}</td>
                                         </tr>
@@ -181,7 +181,7 @@ export default function Expenses() {
                                     </select>
                                 </div>
                                 <div>
-                                    <label htmlFor="exp-amount" className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Amount ($)</label>
+                                    <label htmlFor="exp-amount" className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Amount (Rs)</label>
                                     <input 
                                         type="number" 
                                         id="exp-amount" 

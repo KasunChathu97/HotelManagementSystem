@@ -239,7 +239,7 @@ export default function Reports() {
                                             {reportTab === 'income' ? 'Total Revenue Inflows' : 'Total Operational Outflows'}
                                         </div>
                                         <div className={`text-2xl font-black mt-2 font-heading ${reportTab === 'income' ? 'text-emerald-400' : 'text-rose-400'}`}>
-                                            ${formatAmount(reportTab === 'income' ? reportData.totalRevenue : reportData.totalExpenses)}
+                                            Rs {formatAmount(reportTab === 'income' ? reportData.totalRevenue : reportData.totalExpenses)}
                                         </div>
                                     </div>
                                     <div className="glass-card p-4 rounded-xl border border-slate-800/60">
@@ -278,7 +278,7 @@ export default function Reports() {
                                                             <td className="py-3 px-5 font-semibold text-slate-400">{item.period}</td>
                                                             <td className="py-3 px-5 font-bold text-slate-200 capitalize">{item.paymentMethod}</td>
                                                             <td className="py-3 px-5 text-slate-450">{item.transactionCount} records</td>
-                                                            <td className="py-3 px-5 text-right font-black text-emerald-400">${formatAmount(item.totalIncome)}</td>
+                                                            <td className="py-3 px-5 text-right font-black text-emerald-400">Rs {formatAmount(item.totalIncome)}</td>
                                                         </tr>
                                                     );
                                                 }
@@ -289,7 +289,7 @@ export default function Reports() {
                                                         <td className="py-3 px-5 font-bold text-slate-200 capitalize">{item.category || 'General'}</td>
                                                         <td className="py-3 px-5 text-slate-450 italic">{item.description || 'Expense entry'}</td>
                                                         <td className="py-3 px-5 text-slate-400">{item.count || 0}</td>
-                                                        <td className="py-3 px-5 text-right font-black text-rose-400">${formatAmount(item.amount)}</td>
+                                                        <td className="py-3 px-5 text-right font-black text-rose-400">Rs {formatAmount(item.amount)}</td>
                                                     </tr>
                                                 );
                                             })}
@@ -308,18 +308,18 @@ export default function Reports() {
                                 </div>
 
                                 <div className="space-y-3 max-w-md">
-                                    <div className="flex justify-between border-b border-slate-800/60 pb-2 text-sm">
+                                        <div className="flex justify-between border-b border-slate-800/60 pb-2 text-sm">
                                         <span className="text-slate-400 font-medium">Gross Room Revenue Inflow:</span>
-                                        <span className="font-bold text-emerald-400">+${formatAmount(reportData.revenue)}</span>
+                                        <span className="font-bold text-emerald-400">+Rs {formatAmount(reportData.revenue)}</span>
                                     </div>
                                     <div className="flex justify-between border-b border-slate-800/60 pb-2 text-sm">
                                         <span className="text-slate-400 font-medium">General Operating Expenses:</span>
-                                        <span className="font-bold text-rose-400">-${formatAmount(reportData.expenses)}</span>
+                                        <span className="font-bold text-rose-400">-Rs {formatAmount(reportData.expenses)}</span>
                                     </div>
                                     <div className="flex justify-between border-b border-slate-850 pb-2 text-base font-black pt-2">
                                         <span className="text-slate-200">Net Operating Revenue (Profit):</span>
                                         <span className={reportData.netProfit < 0 ? 'text-rose-400' : 'text-emerald-400'}>
-                                            ${formatAmount(reportData.netProfit)}
+                                            Rs {formatAmount(reportData.netProfit)}
                                         </span>
                                     </div>
                                     <div className="flex justify-between text-xs text-slate-450">
