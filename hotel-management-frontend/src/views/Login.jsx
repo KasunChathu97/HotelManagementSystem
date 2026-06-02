@@ -25,7 +25,7 @@ export default function Login() {
                     <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-xl shadow-brand-500/20 mb-4 animate-bounce-slow">
                         <i className="fa-solid fa-hotel text-2xl"></i>
                     </div>
-                    <h1 className="text-3xl font-extrabold text-slate-100 font-heading">Grand Horizon</h1>
+                    <h1 className="text-3xl font-extrabold text-slate-100 font-heading">Brookside Hotel</h1>
                     <p className="text-slate-400 mt-2 font-medium">Hotel Management Admin Portal</p>
                 </div>
 

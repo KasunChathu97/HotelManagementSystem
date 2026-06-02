@@ -69,7 +69,7 @@ function App() {
               <i className="fa-solid fa-hotel text-sm"></i>
             </div>
             <div>
-              <span className="font-bold text-lg text-slate-100 tracking-wide block leading-none font-heading">Grand Horizon</span>
+              <span className="font-bold text-lg text-slate-100 tracking-wide block leading-none font-heading">Brookside Hotel</span>
               <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Admin Portal</span>
             </div>
           </div>
