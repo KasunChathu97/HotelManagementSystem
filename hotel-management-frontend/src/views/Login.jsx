@@ -3,8 +3,8 @@ import { useApp } from '../context/AppContext';
 
 export default function Login() {
     const { login } = useApp();
-    const [username, setUsername] = useState('admin');
-    const [password, setPassword] = useState('Admin@123456');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
 

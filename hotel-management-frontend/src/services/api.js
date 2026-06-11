@@ -1,12 +1,12 @@
+// src/services/api.js
 import axios from 'axios';
+import API_BASE_URL from "../config";  // config.js එකෙන් import කරන්න
 
-// Backend PORT is 5000 as configured in backend .env.
-// In the backend app.js, routes are mounted directly (e.g. /auth, /rooms, /bookings, /reports).
-// We set the base URL to http://localhost:5000
-const API_BASE_URL = 'http://localhost:5000';
+// මේ line එක DELETE කරන්න හෝ comment කරන්න
+// const API_BASE_URL = process.env.REACT_APP_API_URL;  // <-- මේක දෙපාරක් declare කරනවා
 
 const apiClient = axios.create({
-    baseURL: API_BASE_URL,
+    baseURL: API_BASE_URL,  // දැන් config.js එකෙන් එන value එක use කරනවා
     headers: {
         'Content-Type': 'application/json',
     }
@@ -26,7 +26,7 @@ apiClient.interceptors.request.use(
     }
 );
 
-// Response Interceptor: Catch 401 Unauthorized errors to redirect to login
+// Response Interceptor: Catch 401 Unauthorized errors
 apiClient.interceptors.response.use(
     (response) => response,
     (error) => {
