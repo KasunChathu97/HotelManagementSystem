@@ -140,6 +140,8 @@ CREATE TABLE `customers` (
   `id_type` enum('passport','national_id','driving_license') NOT NULL,
   `id_number` varchar(50) NOT NULL,
   `nationality` varchar(50) DEFAULT NULL,
+  `id_front_image` varchar(255) DEFAULT NULL,
+  `id_back_image` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

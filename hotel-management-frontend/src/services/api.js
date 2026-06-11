@@ -63,8 +63,12 @@ const api = {
     
     // Customers CRUD
     getCustomers: () => apiClient.get('/customers'),
-    createCustomer: (customerData) => apiClient.post('/customers', customerData),
-    updateCustomer: (id, customerData) => apiClient.put(`/customers/${id}`, customerData),
+    createCustomer: (customerData) => apiClient.post('/customers', customerData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+    }),
+    updateCustomer: (id, customerData) => apiClient.put(`/customers/${id}`, customerData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+    }),
     deleteCustomer: (id) => apiClient.delete(`/customers/${id}`),
     
     // Payments CRUD

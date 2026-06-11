@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
+const path = require('path');
 require('dotenv').config();
 
 // Import routes
@@ -18,8 +19,11 @@ const expenseRoutes = require('./routes/expenseRoutes');
 const app = express();
 
 // Security middleware
-app.use(helmet());
+app.use(helmet({
+    crossOriginResourcePolicy: false, // allow images to be fetched from different origin
+}));
 app.use(cors());
+
 
 // Rate limiting
 const limiter = rateLimit({
@@ -37,6 +41,9 @@ if (process.env.NODE_ENV === 'development') {
 // Body parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Serve uploaded files statically
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // API routes
 app.use('/auth', authRoutes);

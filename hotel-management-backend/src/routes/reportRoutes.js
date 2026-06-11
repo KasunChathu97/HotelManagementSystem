@@ -12,16 +12,18 @@ const {
 const { protect } = require('../middleware/authMiddleware');
 const { isAdmin } = require('../middleware/roleMiddleware');
 
-// All report routes require admin access
+// All report routes require authentication
 router.use(protect);
-router.use(isAdmin);
 
+// Dashboard stats are accessible by both Admin and Staff
 router.get('/dashboard', getDashboardStats);
-router.get('/income', getIncomeReport);
-router.get('/expenses', getExpenseReport);
-router.get('/profit-loss', getProfitLossReport);
-router.get('/occupancy', getOccupancyReport);
-router.get('/export/pdf', exportPDF);
-router.get('/export/excel', exportExcel);
+
+// Restrict all other analytics and export reports to Admin only
+router.get('/income', isAdmin, getIncomeReport);
+router.get('/expenses', isAdmin, getExpenseReport);
+router.get('/profit-loss', isAdmin, getProfitLossReport);
+router.get('/occupancy', isAdmin, getOccupancyReport);
+router.get('/export/pdf', isAdmin, exportPDF);
+router.get('/export/excel', isAdmin, exportExcel);
 
 module.exports = router;

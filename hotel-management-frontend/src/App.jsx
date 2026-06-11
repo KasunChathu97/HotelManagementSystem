@@ -35,6 +35,9 @@ function App() {
     return <Login />
   }
 
+  const userRole = user?.role || 'Staff'
+  const isStaff = userRole.toLowerCase() !== 'admin'
+
   const views = {
     dashboard: Dashboard,
     rooms: Rooms,
@@ -47,9 +50,10 @@ function App() {
     users: Users,
   }
 
-  const ActiveView = views[activeView] || Dashboard
+  // Guard active view component render: redirect Staff trying to access Reports or Users to Dashboard
+  const currentViewKey = (isStaff && ['reports', 'users'].includes(activeView)) ? 'dashboard' : activeView
+  const ActiveView = views[currentViewKey] || Dashboard
   const userName = user?.full_name || user?.name || 'Administrator'
-  const userRole = user?.role || 'Staff'
   const navItems = [
     { key: 'dashboard', label: 'Dashboard Home', icon: 'fa-chart-pie' },
     { key: 'rooms', label: 'Room Management', icon: 'fa-door-open' },
@@ -75,16 +79,18 @@ function App() {
           </div>
 
           <nav className="p-4 space-y-1.5">
-            {navItems.map((item) => (
-              <a
-                key={item.key}
-                href={`#${item.key}`}
-                className={`flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all font-medium ${activeView === item.key ? 'bg-brand-500/15 text-slate-100 border border-brand-500/20' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/40'}`}
-              >
-                <i className={`fa-solid ${item.icon} w-5 text-center`}></i>
-                <span>{item.label}</span>
-              </a>
-            ))}
+            {navItems
+              .filter((item) => !(item.key === 'reports' && isStaff))
+              .map((item) => (
+                <a
+                  key={item.key}
+                  href={`#${item.key}`}
+                  className={`flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all font-medium ${activeView === item.key ? 'bg-brand-500/15 text-slate-100 border border-brand-500/20' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/40'}`}
+                >
+                  <i className={`fa-solid ${item.icon} w-5 text-center`}></i>
+                  <span>{item.label}</span>
+                </a>
+              ))}
 
             <div className="pt-4 pb-1">
               <p className="px-4 text-[10px] uppercase font-bold text-slate-500 tracking-wider">System Administration</p>

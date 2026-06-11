@@ -26,6 +26,18 @@ export function AppProvider({ children }) {
     useEffect(() => {
         const handleHashChange = () => {
             const hash = window.location.hash.replace('#', '') || 'dashboard';
+            
+            // Enforce route guard: redirect Staff users trying to access Reports or Users to Dashboard
+            const storedUser = localStorage.getItem('gh_user_data');
+            const parsedUser = storedUser ? JSON.parse(storedUser) : null;
+            const userRole = parsedUser?.role || 'staff';
+            
+            if (userRole.toLowerCase() !== 'admin' && ['reports', 'users'].includes(hash)) {
+                window.location.hash = '#dashboard';
+                setActiveView('dashboard');
+                return;
+            }
+
             setActiveView(hash);
         };
 

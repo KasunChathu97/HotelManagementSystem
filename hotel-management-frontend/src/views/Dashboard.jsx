@@ -7,7 +7,7 @@ import { useApp } from '../context/AppContext';
 Chart.register(...registerables);
 
 export default function Dashboard() {
-    const { showToast, theme } = useApp();
+    const { showToast, theme, user } = useApp();
     const [stats, setStats] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -233,7 +233,7 @@ export default function Dashboard() {
             </div>
 
             {/* KPI Metric Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className={`grid grid-cols-1 sm:grid-cols-2 ${user?.role?.toLowerCase() === 'admin' ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-5`}>
                 {/* Room Inventory Stats */}
                 <div className="glass-card p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between h-32">
                     <div className="flex items-center justify-between">
@@ -244,7 +244,7 @@ export default function Dashboard() {
                     </div>
                     <div className="mt-4">
                         <h3 className="text-3xl font-extrabold text-slate-100 font-heading">{totalRooms}</h3>
-                        <p className="text-xs text-slate-450 mt-1 flex items-center gap-1 font-sans">
+                        <p className="text-xs text-slate-455 mt-1 flex items-center gap-1 font-sans">
                             <span className="text-emerald-400 font-bold">{availableRooms}</span> Available, 
                             <span className="text-rose-400 font-bold">{occupiedRooms}</span> Occupied
                         </p>
@@ -290,24 +290,26 @@ export default function Dashboard() {
                     </div>
                 </div>
 
-                {/* Monthly Profit Margin */}
-                <div className="glass-card p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between h-32">
-                    <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Monthly Profit</span>
-                        <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
-                            <i className="fa-solid fa-coins text-sm"></i>
+                {/* Monthly Profit Margin - Admin only */}
+                {user?.role?.toLowerCase() === 'admin' && (
+                    <div className="glass-card p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between h-32">
+                        <div className="flex items-center justify-between">
+                            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Monthly Profit</span>
+                            <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
+                                <i className="fa-solid fa-coins text-sm"></i>
+                            </div>
+                        </div>
+                        <div className="mt-3">
+                            <h3 className={`text-2xl font-extrabold font-heading ${monthlyProfit < 0 ? 'text-rose-400' : 'text-slate-100'}`}>
+                                Rs {monthlyProfit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                            </h3>
+                            <p className="text-[10px] text-slate-400 mt-1 flex justify-between font-sans">
+                                <span>Rev: <span>Rs {monthlyIncome.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span></span>
+                                <span>Exp: <span>Rs {monthlyExpenses.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span></span>
+                            </p>
                         </div>
                     </div>
-                    <div className="mt-3">
-                        <h3 className={`text-2xl font-extrabold font-heading ${monthlyProfit < 0 ? 'text-rose-400' : 'text-slate-100'}`}>
-                            Rs {monthlyProfit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                        </h3>
-                        <p className="text-[10px] text-slate-400 mt-1 flex justify-between font-sans">
-                            <span>Rev: <span>Rs {monthlyIncome.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span></span>
-                            <span>Exp: <span>Rs {monthlyExpenses.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span></span>
-                        </p>
-                    </div>
-                </div>
+                )}
             </div>
 
             {/* Visual Charts Section & Booking table */}
